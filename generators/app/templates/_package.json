@@ -1,0 +1,11 @@
+{
+  "name": "<%= appname %>",
+  "version": "0.0.1",
+  "private": true,
+  "scripts" : {
+    "start": "node ."
+  },
+  "dependencies": {
+    "koala": "^1.0.0"
+  }
+}
