@@ -1,4 +1,4 @@
-# generator-koala [![Build Status](https://secure.travis-ci.org/BlakeTidwell/generator-koala.png?branch=master)](https://travis-ci.org/BlakeTidwell/generator-koala)
+# generator-koalesce [![Build Status](https://secure.travis-ci.org/BlakeTidwell/generator-koalesce.png?branch=master)](https://travis-ci.org/BlakeTidwell/generator-koalesce)
 
 > [Yeoman](http://yeoman.io) generator
 
@@ -29,16 +29,16 @@ Yeoman travels light. He didn't pack any generators when he moved in. You can
 think of a generator like a plug-in. You get to choose what type of application
 you wish to create, such as a Backbone application or even a Chrome extension.
 
-To install generator-koala from npm, run:
+To install generator-koalesce from npm, run:
 
 ```bash
-npm install -g generator-koala
+npm install -g generator-koalesce
 ```
 
 Finally, initiate the generator:
 
 ```bash
-yo koala
+yo koalesce
 ```
 
 ### Getting To Know Yeoman

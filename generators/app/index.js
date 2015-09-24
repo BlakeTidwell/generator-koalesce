@@ -2,6 +2,7 @@
 var generators = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
+var glob = require('glob');
 var path = require('path');
 var _s = require('underscore.string');
 
@@ -11,7 +12,7 @@ module.exports = generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the phenomenal ' + chalk.red('Koala') + ' generator!'
+      'Welcome to the phenomenal ' + chalk.red('Koalesce') + ' generator!'
     ));
 
     var prompts = [{
@@ -31,37 +32,14 @@ module.exports = generators.Base.extend({
 
   writing: {
     app: function () {
-      var baseFiles = [
-        ['_bower.json', 'bower.json'],
-        ['index.js', 'index.js']
-      ],
-      generator = this;
-      baseFiles.forEach(function(copyInfo) {
-        generator.fs.copy(
-          generator.templatePath(copyInfo[0]),
-          generator.destinationPath(copyInfo[1])
-        );
-      });
-      generator.fs.copyTpl(
-        generator.templatePath('_package.json'),
-        generator.destinationPath('package.json'),
-        { appname: generator.appname }
-      )
-    },
+      this.sourceRoot(path.join(__dirname, 'templates', 'meta'));
+      glob.sync('**', { cwd: this.sourceRoot() }).map(function (file) {
+        this.template(file, file.replace(/^_/, ''));
+      }, this);
 
-    projectfiles: function () {
-      var baseFiles = [
-        ['editorconfig', '.editorconfig'],
-        ['jshintrc', '.jshintrc'],
-      ],
-      generator = this;
-      baseFiles.forEach(function(copyInfo) {
-        generator.fs.copy(
-          generator.templatePath(copyInfo[0]),
-          generator.destinationPath(copyInfo[1])
-        );
-      });
-    }
+      this.sourceRoot(path.join(__dirname, 'templates', 'src'));
+      this.directory('.', '.');
+    },
   },
 
   install: function () {

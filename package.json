@@ -1,10 +1,10 @@
 {
-  "name": "generator-koala",
+  "name": "generator-koalesce",
   "version": "0.0.0",
-  "description": "Yeoman generator",
+  "description": "Yeoman generator for Koala plus boilerplate",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "BlakeTidwell/generator-koala",
+  "repository": "BlakeTidwell/generator-koalesce",
   "author": {
     "name": "Blake Tidwell",
     "email": "",
@@ -21,8 +21,9 @@
   ],
   "dependencies": {
     "chalk": "^1.0.0",
+    "glob": "^5.0.14",
     "underscore.string": "^3.2.2",
-    "yeoman-generator": "^0.19.0",
+    "yeoman-generator": "^0.20.2",
     "yosay": "^1.0.2"
   },
   "devDependencies": {

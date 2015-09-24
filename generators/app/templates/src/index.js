@@ -3,7 +3,7 @@ var app = koala();
 var port = process.env.PORT || 3000;
 
 app.use(function* () {
-  this.body = 'Hello Koala';
+  this.body = 'Hello Koalesce';
 });
 
 app.listen(port);
