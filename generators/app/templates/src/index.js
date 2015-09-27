@@ -1,10 +1,5 @@
-var koala = require('koala');
-var app = koala();
 var port = process.env.PORT || 3000;
-
-app.use(function* () {
-  this.body = 'Hello Koalesce';
-});
+var app = require('./app');
 
 app.listen(port);
 

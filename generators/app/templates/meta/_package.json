@@ -2,14 +2,15 @@
   "name": "<%= appname %>",
   "version": "0.0.1",
   "private": true,
-  "scripts" : {
+  "scripts": {
     "start": "node .",
     "test": "mocha -w --recursive -r ./test/testHelper.js"
   },
   "dependencies": {
-    "koala": "^1.0.0"
+    "koala": "^1.0.0",
+    "sequelize": "^3.9.0"
   },
-  "devDependencies" : {
+  "devDependencies": {
     "mocha": "^2.3.3",
     "chai": "^3.3.0"
   }

@@ -11,7 +11,8 @@
     "url": "https://github.com/BlakeTidwell"
   },
   "scripts": {
-    "test": "mocha -w"
+    "test": "mocha -w -r ./test/testHelper.js",
+    "setup": "node scripts/setup.js"
   },
   "files": [
     "generators"
@@ -27,6 +28,11 @@
     "yosay": "^1.0.2"
   },
   "devDependencies": {
-    "mocha": "*"
+    "chai": "^3.3.0",
+    "co-mocha": "^1.1.2",
+    "co-supertest": "0.0.10",
+    "ejs": "^2.3.4",
+    "mocha": "^2.3.3",
+    "supertest": "^1.1.0"
   }
 }
