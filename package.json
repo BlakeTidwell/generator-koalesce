@@ -11,8 +11,9 @@
     "url": "https://github.com/BlakeTidwell"
   },
   "scripts": {
-    "test": "mocha -w -r ./test/testHelper.js",
-    "setup": "node scripts/setup.js"
+    "test": "NODE_ENV=test mocha -w -r ./test/testHelper.js",
+    "setup": "node scripts/setup.js",
+    "clean": "rm -rf ./test/fixtures/app/*"
   },
   "files": [
     "generators"

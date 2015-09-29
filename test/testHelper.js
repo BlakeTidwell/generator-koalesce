@@ -1,3 +1,4 @@
+require('shelljs/global');
 require('co-mocha');
 var chai = require('chai');
 

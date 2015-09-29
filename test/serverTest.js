@@ -5,11 +5,14 @@ var fs = require('fs');
 var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var coTest = require('co-supertest');
-var app, request;
+var app, request, suite, db;
 
 describe('server smoke test', function() {
+  this.timeout(0);
+
   describe('koalesce:app', function () {
     before(function (done) {
+      suite = this;
       helpers.run(path.join(__dirname, '../generators/app'))
         .inTmpDir(function(dir) {
           fs.symlinkSync(
@@ -21,19 +24,47 @@ describe('server smoke test', function() {
         .withOptions({ skipInstall: true })
         .withPrompts({ appname: 'test' })
         .on('end', function() {
-          app = require(process.cwd() + '/app').listen(3001);
-          request = coTest.agent(app);
-          done();
+          suite.tmpDir = process.cwd();
+          app = require(suite.tmpDir + '/app').listen(3001);
+          db = require(suite.tmpDir + '/models');
+          db.sequelize.sync().then(function() {
+            request = coTest.agent(app);
+            done();
+          });
         });
     });
 
     after(function () {
       app.close();
+      db.sequelize.sync({ force: true });
     });
 
-    it('configures a working server', function *() {
+    it('configures a working app', function *() {
       var res = yield request.get('/').expect(200).end();
       expect(res.text).to.equal('Hello Koalesce');
+    });
+
+    it('configures a database connection', function *() {
+      var createResponse = yield request.post(
+        '/posts'
+      ).send({
+        title: 'A Title'
+      }).expect(200).end();
+      expect(createResponse.body.id).to.exist;
+
+      var indexResponse = yield request.get('/posts').expect(200).end();
+      var post = indexResponse.body[0];
+      expect(post.id).to.equal(createResponse.body.id);
+      expect(post.title).to.equal('A Title');
+    });
+
+    it('configures sequelize for use via CLI', function (done) {
+      exec('sequelize model:create --name Foo --attributes bar:string', function(code, output) {
+        exec('sequelize db:migrate --config ' + suite.tmpDir + '/config/config.json', function(code, output) {
+          expect(code).to.eq(0);
+          done();
+        });
+      });
     });
   });
 });

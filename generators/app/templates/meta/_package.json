@@ -8,7 +8,10 @@
   },
   "dependencies": {
     "koala": "^1.0.0",
-    "sequelize": "^3.9.0"
+    "koa-router": "^5.2.1",
+    "sequelize": "^3.9.0",
+    "pg": "^4.4.1",
+    "pg-hstore": "^2.3.2"
   },
   "devDependencies": {
     "mocha": "^2.3.3",
