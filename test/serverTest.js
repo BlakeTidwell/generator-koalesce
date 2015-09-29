@@ -34,9 +34,10 @@ describe('server smoke test', function() {
         });
     });
 
-    after(function () {
+    after(function *() {
       app.close();
-      db.sequelize.sync({ force: true });
+      yield db.sequelize.drop();
+      yield db.sequelize.query('DROP TABLE "SequelizeMeta";');
     });
 
     it('configures a working app', function *() {
@@ -62,7 +63,9 @@ describe('server smoke test', function() {
       exec('sequelize model:create --name Foo --attributes bar:string', function(code, output) {
         exec('sequelize db:migrate --config ' + suite.tmpDir + '/config/config.json', function(code, output) {
           expect(code).to.eq(0);
-          done();
+          exec('sequelize db:migrate:undo --config '  + suite.tmpDir + '/config/config.json', function(code, output) {
+            done();
+          });
         });
       });
     });
