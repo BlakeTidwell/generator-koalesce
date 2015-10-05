@@ -59,13 +59,13 @@ describe('server smoke test', function() {
       expect(post.title).to.equal('A Title');
     });
 
-    it('configures sequelize for use via CLI', function *() {
+    it('configures sequelize for use via CLI', function () {
       var result;
-      result = yield exec('sequelize model:create --name Foo --attributes bar:string');
+      result = exec('sequelize model:create --name Foo --attributes bar:string');
       expect(result.code).to.eq(0);
-      result = yield exec('sequelize db:migrate');
+      result = exec('sequelize db:migrate');
       expect(result.code).to.eq(0);
-      result = yield exec('sequelize db:migrate:undo');
+      result = exec('sequelize db:migrate:undo');
       expect(result.code).to.eq(0);
     });
   });
