@@ -59,15 +59,12 @@ describe('server smoke test', function() {
       expect(post.title).to.equal('A Title');
     });
 
-    it('configures sequelize for use via CLI', function (done) {
-      exec('sequelize model:create --name Foo --attributes bar:string', function(code, output) {
-        exec('sequelize db:migrate --config ' + suite.tmpDir + '/config/config.json', function(code, output) {
-          expect(code).to.eq(0);
-          exec('sequelize db:migrate:undo --config '  + suite.tmpDir + '/config/config.json', function(code, output) {
-            done();
-          });
-        });
-      });
+    it('configures sequelize for use via CLI', function *() {
+      yield exec('sequelize model:create --name Foo --attributes bar:string');
+      //function(code, output) {
+      var result = yield exec('sequelize db:migrate --config ' + suite.tmpDir + '/config/config.json');
+      expect(result.code).to.eq(0);
+      yield exec('sequelize db:migrate:undo --config '  + suite.tmpDir + '/config/config.json');
     });
   });
 });
