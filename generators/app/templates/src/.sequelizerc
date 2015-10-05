@@ -1,0 +1,10 @@
+require('./lib/environment');
+var env = process.env.NODE_ENV || 'development';
+var config = require(__dirname + '/config/config.json')[env];
+
+module.exports = {
+  'url': config.dialect + '://' +
+    process.env.DATABASE_USER + ':' +
+    process.env.DATABASE_PASSWORD + '@' +
+    config.host + '/' + process.env.DATABASE_NAME
+}

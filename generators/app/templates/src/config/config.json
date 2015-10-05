@@ -1,15 +1,9 @@
 {
   "development": {
-    "username": "koalesce",
-    "password": "koalesce",
-    "database": "koalesce_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "username": "koalesce",
-    "password": "koalesce",
-    "database": "koalesce_test",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "logging": false

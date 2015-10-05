@@ -22,7 +22,7 @@ describe('server smoke test', function() {
           );
         })
         .withOptions({ skipInstall: true })
-        .withPrompts({ appname: 'test' })
+        .withPrompts({ appname: 'koalesce' })
         .on('end', function() {
           suite.tmpDir = process.cwd();
           app = require(suite.tmpDir + '/app').listen(3001);
@@ -60,11 +60,13 @@ describe('server smoke test', function() {
     });
 
     it('configures sequelize for use via CLI', function *() {
-      yield exec('sequelize model:create --name Foo --attributes bar:string');
-      //function(code, output) {
-      var result = yield exec('sequelize db:migrate --config ' + suite.tmpDir + '/config/config.json');
+      var result;
+      result = yield exec('sequelize model:create --name Foo --attributes bar:string');
       expect(result.code).to.eq(0);
-      yield exec('sequelize db:migrate:undo --config '  + suite.tmpDir + '/config/config.json');
+      result = yield exec('sequelize db:migrate');
+      expect(result.code).to.eq(0);
+      result = yield exec('sequelize db:migrate:undo');
+      expect(result.code).to.eq(0);
     });
   });
 });

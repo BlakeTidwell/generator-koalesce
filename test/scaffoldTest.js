@@ -10,7 +10,7 @@ describe('scaffolding', function() {
     before(function (done) {
       helpers.run(path.join(__dirname, '../generators/app'))
         .withOptions({ skipInstall: true })
-        .withPrompts({ appname: 'test' })
+        .withPrompts({ appname: 'koalesce' })
         .on('end', done);
     });
 
@@ -27,7 +27,7 @@ describe('scaffolding', function() {
 
     it('names the app correctly', function () {
       var contents = fs.readFileSync('package.json', 'utf8');
-      assert.fileContent('package.json', /"name": "test"/)
+      assert.fileContent('package.json', /"name": "koalesce"/)
     });
   });
 });

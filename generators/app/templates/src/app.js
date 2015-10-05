@@ -1,3 +1,4 @@
+require('./lib/environment');
 var koala = require('koala');
 var app = koala();
 var router = require('koa-router')();
