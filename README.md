@@ -1,4 +1,5 @@
-# generator-koalesce [![Build Status](https://secure.travis-ci.org/BlakeTidwell/generator-koalesce.png?branch=master)](https://travis-ci.org/BlakeTidwell/generator-koalesce)
+# generator-koalesce
+[//]: <> ([![Build Status](https://secure.travis-ci.org/BlakeTidwell/generator-koalesce.png?branch=master)](https://travis-ci.org/BlakeTidwell/generator-koalesce))
 
 > [Yeoman](http://yeoman.io) generator
 

@@ -10,6 +10,11 @@ var <%= singular %> = require('../models').<%= singular %>;
 });
 // Do not remove. Parses JSON; will be moved further up chain.
 
+<%= plural %>Controller.post('/<%= _s.slugify(plural) %>', function *(next) {
+  var <%= singular.toLowerCase() %> = yield <%= singular %>.create(this.data);
+  this.body = { id: <%= singular.toLowerCase() %>.id }
+})
+
 <%= plural %>Controller.get('/<%= _s.slugify(plural) %>', function *(next) {
   this.body = yield <%= singular %>.findAll();
 });
