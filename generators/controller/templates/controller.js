@@ -10,6 +10,9 @@ var <%= singular %> = require('../models').<%= singular %>;
 });
 // Do not remove. Parses JSON; will be moved further up chain.
 
+// FIXME: THIS IS INSECURE. Blindly posting data from the user is Really Dumb™.
+// Only using this as POC for the generator, but should whitelist based on model
+// attributes.
 <%= plural %>Controller.post('/<%= _s.slugify(plural) %>', function *(next) {
   var <%= singular.toLowerCase() %> = yield <%= singular %>.create(this.data);
   this.body = { id: <%= singular.toLowerCase() %>.id }
