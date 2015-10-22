@@ -7,7 +7,7 @@
   "repository": "BlakeTidwell/generator-koalesce",
   "author": {
     "name": "Blake Tidwell",
-    "email": "",
+    "email": "batidwell@gmail.com",
     "url": "https://github.com/BlakeTidwell"
   },
   "scripts": {
@@ -19,7 +19,14 @@
     "generators"
   ],
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "koala",
+    "koa",
+    "generator",
+    "yeoman",
+    "marsupial",
+    "wallaby",
+    "fosters"
   ],
   "dependencies": {
     "chalk": "^1.0.0",
