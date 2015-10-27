@@ -4,3 +4,8 @@
 # Dotfiles
 .env
 .env.*
+
+# Vim
+*~
+*.swo
+*.swp
