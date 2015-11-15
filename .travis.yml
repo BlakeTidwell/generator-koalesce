@@ -8,4 +8,5 @@ install:
   - npm install
   - npm run setup
 before_script:
-  - psql -c 'create database koalesce_test;' -U postgres
+  - psql -c "CREATE USER koalesce WITH PASSWORD 'koalesce';" -U postgres
+  - psql -c 'CREATE DATABASE koalesce_test;' -U postgres
