@@ -42,6 +42,7 @@
     "co-supertest": "0.0.10",
     "ejs": "^2.3.4",
     "mocha": "^2.3.3",
+    "sequelize-cli": "^2.1.0",
     "shelljs": "^0.5.3",
     "supertest": "^1.1.0"
   }
